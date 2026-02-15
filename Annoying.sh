@@ -37,7 +37,6 @@ fw="${sf%x*}"; fh="${sf#*x}"
 
 xrandr --output "$OUT" --scale-from "${fw}x${fh}" || true
 
-# 20% chance to enable pain panning
 if [ $((RANDOM%5)) -eq 0 ]; then
   read mw mh <<<"$(sed 's/x/ /' <<<"$mode")"
   vx=$((RANDOM % (mw/2 + 1)))
@@ -47,7 +46,6 @@ if [ $((RANDOM%5)) -eq 0 ]; then
   xrandr --output "$OUT" --panning "${mw}x${mh}+${vx}+${vy}/${vw}x${vh}+0+0" || true
 fi
 
-# 10% chance to hide cursor 
 if [ $((RANDOM%10)) -eq 0 ]; then
   (unclutter -idle 0 &>/dev/null &) || true
 fi
